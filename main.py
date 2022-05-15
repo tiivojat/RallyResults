@@ -41,12 +41,29 @@ def create_empty_pos_xml(parent, table_name):
 
 class StageResults:
 
-    def __init__(self, master, stage_list, absolute_list):
+    def __init__(self, master, base_id, ss_nr):
 
         self.master = master
 
-        self.stage_list = stage_list
-        self.absolute_list = absolute_list
+        self.stage_list = None
+        self.absolute_list = None
+        self.ss_id = base_id + ss_nr
+
+        self.valid = True
+
+        self.generate_results()
+
+    def generate_results(self):
+        r = requests.get('https://www.autosport.ee/xml/results/race_res_' + str(self.ss_id) + '_abs.xml')
+        if r.status_code != 200:
+            self.valid = False
+        else:
+            self.absolute_list = xmltodict.parse(r.text)["race"]["ss_res_list"]["ss_res"]
+        r = requests.get('https://www.autosport.ee/xml/results/race_res_' + str(self.ss_id) + '_ss.xml')
+        if r.status_code != 200:
+            self.valid = False
+        else:
+            self.stage_list = xmltodict.parse(r.text)["race"]["ss_res_list"]["ss_res"]
 
     def get_last_finisher_number(self, stage_id):
         try:
@@ -155,7 +172,7 @@ class BBRallyResults:
 
         self.api.add_url_rule('/rally/SS<req_id>', 'SS_last_finisher', self.get_overall_last_results)
         self.api.add_url_rule('/rally/SS<req_id>/class', 'SS_last_finisher_class', self.get_overall_class_result)
-        self.api.add_url_rule('/rally/SS<req_id>/abs', 'SS_abs_res', self.get_overall_abs_top5)
+        self.api.add_url_rule('/rally/SS<req_id>/abs', 'SS_abs_res', self.get_overall_abs)
         self.api.add_url_rule('/rally/reset', 'Reset lists in case of problems', self.clear_finishers_list)
 
     def clear_finishers_list(self):
@@ -166,7 +183,11 @@ class BBRallyResults:
     def get_overall_last_results(self, req_id):
         print("Last finisher absolute info request")
         stage_id = int(req_id)
-        results = self.generate_results(stage_id)
+        results = StageResults(self, self.base_id, stage_id)
+        if not results.valid:
+            placeholder = ET.parse('NoResults_last.xml')
+            return Response(ET.tostring(placeholder.getroot()), mimetype='text/xml')
+
         last_finisher_nr = results.get_last_finisher_number(stage_id)
         try:
             xml = results.create_last_finisher_xml(last_finisher_nr)
@@ -176,10 +197,13 @@ class BBRallyResults:
             print("No results yet")
             return Response("No results yet")
 
-    def get_overall_abs_top5(self, req_id):
-        print("SS{} absolute TOP5 request".format(int(req_id)))
+    def get_overall_abs(self, req_id):
+        print("SS{} absolute TOP10 request".format(int(req_id)))
         stage_id = int(req_id)
-        results = self.generate_results(stage_id)
+        results = StageResults(self, self.base_id, stage_id)
+        if not results.valid:
+            placeholder = ET.parse('NoResults_abs.xml')
+            return Response(ET.tostring(placeholder.getroot()), mimetype='text/xml')
         try:
             xml = results.create_abs_result_xml()
             return Response(xml, mimetype='text/xml')
@@ -190,7 +214,11 @@ class BBRallyResults:
     def get_overall_class_result(self, req_id):
         print("Last finisher absolute class info request")
         stage_id = int(req_id)
-        results = self.generate_results(stage_id)
+        results = StageResults(self, self.base_id, stage_id)
+        if not results.valid:
+            placeholder = ET.parse('NoResults_class.xml')
+            return Response(ET.tostring(placeholder.getroot()), mimetype='text/xml')
+
         last_finisher_nr = results.get_last_finisher_number(stage_id)
         try:
             xml = results.create_class_result_xml(last_finisher_nr)
@@ -200,13 +228,6 @@ class BBRallyResults:
             print("No results yet")
             return Response("No results yet")
 
-    def generate_results(self, stage_id):
-        r = requests.get('https://www.autosport.ee/xml/results/race_res_' + str(self.base_id + stage_id) + '_abs.xml')
-        absolute_list = xmltodict.parse(r.text)["race"]["ss_res_list"]["ss_res"]
-        r = requests.get('https://www.autosport.ee/xml/results/race_res_' + str(self.base_id + stage_id) + '_ss.xml')
-        stage_list = xmltodict.parse(r.text)["race"]["ss_res_list"]["ss_res"]
-
-        return StageResults(self, stage_list, absolute_list)
 
 if __name__ == '__main__':
     bb = BBRallyResults(1154)

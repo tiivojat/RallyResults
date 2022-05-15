@@ -1,0 +1,14 @@
+<rally>
+	<latest>
+		<position>111</position>
+		<start-number>222</start-number>
+		<drivers>DRIVER - CO-DRIVER</drivers>
+		<driver>D. DRIVER</driver>
+		<driver-first>FIRSTNAME</driver-first>
+		<driver-last>LASTNAME</driver-last>
+		<co-driver>C. CO_DRIVER</co-driver>
+		<car>RALLY CAR</car>
+		<time>09:50.2</time>
+		<loss>-0:00.00</loss>
+	</latest>
+</rally>

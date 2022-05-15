@@ -1,0 +1,94 @@
+<rally>
+	<absolute>
+		<driver>
+			<pos>1</pos>
+			<number>3</number>
+			<fullname>FULL NAME 1</fullname>
+			<lastname>LASTNAME 1</lastname>
+			<firstname>FIRSTNAME 1</firstname>
+			<participants>DRIVER1 NAME / CARD1 READER</participants>
+			<time>10:30.2</time>
+		</driver>
+		<driver>
+			<pos>2</pos>
+			<number>6</number>
+			<fullname>FULL NAME 2</fullname>
+			<lastname>LASTNAME 2</lastname>
+			<firstname>FIRSTNAME 2</firstname>
+			<participants>DRIVER2 NAME / CARD2 READER</participants>
+			<time>+0:11.9</time>
+		</driver>
+		<driver>
+			<pos>3</pos>
+			<number>4</number>
+			<fullname>FULL NAME 3</fullname>
+			<lastname>LASTNAME 3</lastname>
+			<firstname>FIRSTNAME 3</firstname>
+			<participants>DRIVER3 NAME / CARD3 READER</participants>
+			<time>+0:11.80</time>
+		</driver>
+		<driver>
+			<pos>4</pos>
+			<number>8</number>
+			<fullname>FULL NAME 4</fullname>
+			<lastname>LASTNAME 4</lastname>
+			<firstname>FIRSTNAME 4</firstname>
+			<participants>DRIVER4 NAME / CARD4 READER</participants>
+			<time>+0:15.0</time>
+		</driver>
+		<driver>
+			<pos>5</pos>
+			<number>7</number>
+			<fullname>FULL NAME 5</fullname>
+			<lastname>LASTNAME 5</lastname>
+			<firstname>FIRSTNAME 5</firstname>
+			<participants>DRIVER5 NAME / CARD5 READER</participants>
+			<time>+0:18.59</time>
+		</driver>
+		<driver>
+			<pos>6</pos>
+			<number>1</number>
+			<fullname>FULL NAME 6</fullname>
+			<lastname>LASTNAME 6</lastname>
+			<firstname>FIRSTNAME 6</firstname>
+			<participants>DRIVER6 NAME / CARD6 READER</participants>
+			<time>+0:19.9</time>
+		</driver>
+		<driver>
+			<pos>7</pos>
+			<number>17</number>
+			<fullname>FULL NAME 7</fullname>
+			<lastname>LASTNAME 7</lastname>
+			<firstname>FIRSTNAME 7</firstname>
+			<participants>DRIVER7 NAME / CARD7 READER</participants>
+			<time>+0:20.0</time>
+		</driver>
+		<driver>
+			<pos>8</pos>
+			<number>10</number>
+			<fullname>FULL NAME 8</fullname>
+			<lastname>LASTNAME 8</lastname>
+			<firstname>FIRSTNAME 8</firstname>
+			<participants>DRIVER8 NAME / CARD8 READER</participants>
+			<time>+0:20.50</time>
+		</driver>
+		<driver>
+			<pos>9</pos>
+			<number>19</number>
+			<fullname>FULL NAME 9</fullname>
+			<lastname>LASTNAME 9</lastname>
+			<firstname>FIRSTNAME 9</firstname>
+			<participants>DRIVER9 NAME / CARD9 READER</participants>
+			<time>+0:21.59</time>
+		</driver>
+		<driver>
+			<pos>10</pos>
+			<number>2</number>
+			<fullname>FULL NAME 10</fullname>
+			<lastname>LASTNAME 10</lastname>
+			<firstname>FIRSTNAME 10</firstname>
+			<participants>DRIVER10 NAME / CARD10 READER</participants>
+			<time>+0:22.89</time>
+		</driver>
+	</absolute>
+</rally>

@@ -1,0 +1,32 @@
+<rally>
+	<class>
+		<class_name>EMV9</class_name>
+		<class_dr>
+			<pos>1</pos>
+			<number>69</number>
+			<fullname>FULL NAME 1</fullname>
+			<lastname>LASTNAME 1</lastname>
+			<firstname>FIRSTNAME 1</firstname>
+			<participants>DRIVER1 NAME / CARD1 READER</participants>
+			<time>10:30.2</time>
+		</class_dr>
+		<class_dr>
+			<pos>2</pos>
+			<number>79</number>
+			<fullname>FULL NAME 2</fullname>
+			<lastname>LASTNAME 2</lastname>
+			<firstname>FIRSTNAME 2</firstname>
+			<participants>DRIVER2 NAME / CARD2 READER</participants>
+			<time>+0:22.9</time>
+		</class_dr>
+		<class_dr>
+			<pos>3</pos>
+			<number>89</number>
+			<fullname>FULL NAME 3</fullname>
+			<lastname>LASTNAME 3</lastname>
+			<firstname>FIRSTNAME 3</firstname>
+			<participants>DRIVER2 NAME / CARD3 READER</participants>
+			<time>+0:30.59</time>
+		</class_dr>
+	</class>
+</rally>
